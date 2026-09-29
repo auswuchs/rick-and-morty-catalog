@@ -1,10 +1,9 @@
-import { useState } from 'react'
-
+import { usePageParam } from '~/hooks/usePageParam'
 import { CharacterList } from '~/modules/characters/components/CharacterList'
 import { useCharactersView } from '~/modules/characters/hooks/useCharactersView'
 
 export function CharactersPage() {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = usePageParam()
   const { characters, pageInfo, loading, error } = useCharactersView(page)
 
   if (error) {
@@ -23,7 +22,7 @@ export function CharactersPage() {
       <button
         type="button"
         disabled={pageInfo.prev === null}
-        onClick={() => setPage((current) => current - 1)}
+        onClick={() => setPage(page - 1)}
       >
         Назад
       </button>
@@ -39,7 +38,7 @@ export function CharactersPage() {
       <button
         type="button"
         disabled={pageInfo.next === null}
-        onClick={() => setPage((current) => current + 1)}
+        onClick={() => setPage(page + 1)}
       >
         Вперёд
       </button>
