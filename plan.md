@@ -49,8 +49,9 @@ https://hh.ru/vacancy/136400871
 - [x] graphql-codegen
 - [x] список персонажей, пагинация и фильтры в query-параметрах, поиск с дебаунсом
 - [x] дизайн и адаптив (тёмная тема, скелетон, пустые состояния и ошибка)
-- [ ] избранное (localStorage)
-- [ ] карточка персонажа + роутинг
-- [ ] синхронизация draft в SearchInput при навигации «назад» (известное ограничение)
-- [ ] тесты + README
+- [x] избранное (localStorage + useSyncExternalStore)
+- [x] карточка персонажа + роутинг (data router, ScrollRestoration)
+- [x] синхронизация draft в SearchInput с URL
+- [x] тесты (Vitest + Testing Library)
+- [ ] README со скриншотами и описанием решений
 - [ ] залить на GitHub, вставить ссылку в резюме hh
