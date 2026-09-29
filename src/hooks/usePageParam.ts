@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router'
 
-const PAGE_PARAM = 'page'
+export const PAGE_PARAM = 'page'
 const FIRST_PAGE = 1
 
 export function usePageParam() {
