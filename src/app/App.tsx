@@ -1,5 +1,7 @@
+import { CharactersPage } from '~/pages/CharactersPage'
+
 function App() {
-  return <h1>Rick & Morty</h1>
+  return <CharactersPage />
 }
 
 export default App
