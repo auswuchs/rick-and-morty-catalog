@@ -2,6 +2,8 @@
 
 Pet-проект: каталог персонажей на React, TypeScript и GraphQL. Данные берутся из публичного [Rick and Morty GraphQL API](https://rickandmortyapi.com/graphql).
 
+**Демо:** https://auswuchs.github.io/rick-and-morty-catalog/
+
 ![Каталог персонажей](docs/screenshot.jpg)
 
 ## Что умеет
@@ -33,6 +35,8 @@ pnpm dev
 | `pnpm lint` / `pnpm lint:styles` | ESLint и Stylelint (с автоисправлением) |
 | `pnpm typecheck` | только проверка типов |
 | `pnpm codegen` | перегенерировать типы из схемы API и файлов `.graphql` |
+
+Публикация на GitHub Pages идёт через Actions при пуше в `main`: workflow сначала прогоняет линтеры и тесты, затем собирает проект. Путь `base` берётся из имени репозитория (`BASE_PATH`), а для прямых ссылок вида `/characters/3` после сборки создаётся копия `404.html`.
 
 Адрес API задаётся в `.env` (`VITE_GRAPHQL_URL`). Сгенерированные типы лежат в `src/gql` и закоммичены, поэтому `pnpm codegen` нужен только после изменения запросов. Ему требуется доступ к API: схема читается по URL.
 
