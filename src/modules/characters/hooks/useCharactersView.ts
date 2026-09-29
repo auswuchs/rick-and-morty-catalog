@@ -17,7 +17,7 @@ export function useCharactersView(page: number, filters: CharactersFilters) {
   })
 
   return {
-    characters: mapCharacters(data),
+    characters: mapCharacters(data?.characters?.results),
     pageInfo: mapPageInfo(data),
     loading,
     error,

@@ -1,0 +1,21 @@
+.image,
+.title,
+.line {
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-md);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.title {
+  width: 60%;
+  height: 2.25rem;
+}
+
+.line {
+  width: 40%;
+  height: 1.25rem;
+}

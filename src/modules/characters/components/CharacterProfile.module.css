@@ -1,0 +1,64 @@
+.profile {
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.name {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.status {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-2) var(--space-6);
+  margin: 0;
+}
+
+.fact {
+  display: contents;
+}
+
+.term {
+  color: var(--color-text-muted);
+}
+
+.description {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (width < 40rem) {
+  .profile {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+}

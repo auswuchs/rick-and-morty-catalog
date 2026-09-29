@@ -24,3 +24,10 @@ export type SetCharactersFilter = <Key extends keyof CharactersFilters>(
   key: Key,
   value: CharactersFilters[Key],
 ) => void
+
+export interface CharacterDetails extends Character {
+  gender: string
+  origin: string
+  location: string
+  episodesCount: number
+}

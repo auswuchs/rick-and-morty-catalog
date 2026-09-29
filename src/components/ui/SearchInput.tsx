@@ -14,7 +14,21 @@ interface SearchInputProps {
 
 export function SearchInput({ label, value, onChange }: SearchInputProps) {
   const [draft, setDraft] = useState(value)
-  const debouncedOnChange = useDebouncedCallback(onChange, DEBOUNCE_MS)
+  const [lastSent, setLastSent] = useState(value)
+  const [lastSeenValue, setLastSeenValue] = useState(value)
+
+  const debouncedOnChange = useDebouncedCallback((next: string) => {
+    setLastSent(next)
+    onChange(next)
+  }, DEBOUNCE_MS)
+
+  if (value !== lastSeenValue) {
+    setLastSeenValue(value)
+
+    if (value !== lastSent) {
+      setDraft(value)
+    }
+  }
 
   return (
     <label className={styles.field}>

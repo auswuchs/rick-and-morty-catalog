@@ -52,17 +52,8 @@ export function CharactersPage() {
   }
 
   return (
-    <main className={styles.page}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>
-          Rick
-          {' '}
-          <span className={styles.amp}>&</span>
-          {' '}
-          Morty
-        </h1>
-        <p className={styles.subtitle}>Каталог персонажей</p>
-      </header>
+    <>
+      <h1 className={styles.title}>Каталог персонажей</h1>
       <CharacterFilters
         filters={filters}
         onChange={setFilter}
@@ -83,6 +74,6 @@ export function CharactersPage() {
           />
         </footer>
       )}
-    </main>
+    </>
   )
 }

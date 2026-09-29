@@ -1,0 +1,9 @@
+query FavoriteCharacters($ids: [ID!]!) {
+  charactersByIds(ids: $ids) {
+    id
+    name
+    status
+    species
+    image
+  }
+}

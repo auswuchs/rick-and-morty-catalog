@@ -14,10 +14,14 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      count\n      pages\n      next\n      prev\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}": typeof types.CharactersDocument,
+    "query Character($id: ID!) {\n  character(id: $id) {\n    id\n    name\n    status\n    species\n    gender\n    image\n    origin {\n      name\n    }\n    location {\n      name\n    }\n    episode {\n      id\n    }\n  }\n}": typeof types.CharacterDocument,
+    "query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      pages\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}": typeof types.CharactersDocument,
+    "query FavoriteCharacters($ids: [ID!]!) {\n  charactersByIds(ids: $ids) {\n    id\n    name\n    status\n    species\n    image\n  }\n}": typeof types.FavoriteCharactersDocument,
 };
 const documents: Documents = {
-    "query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      count\n      pages\n      next\n      prev\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}": types.CharactersDocument,
+    "query Character($id: ID!) {\n  character(id: $id) {\n    id\n    name\n    status\n    species\n    gender\n    image\n    origin {\n      name\n    }\n    location {\n      name\n    }\n    episode {\n      id\n    }\n  }\n}": types.CharacterDocument,
+    "query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      pages\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}": types.CharactersDocument,
+    "query FavoriteCharacters($ids: [ID!]!) {\n  charactersByIds(ids: $ids) {\n    id\n    name\n    status\n    species\n    image\n  }\n}": types.FavoriteCharactersDocument,
 };
 
 /**
@@ -37,7 +41,15 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      count\n      pages\n      next\n      prev\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}"): (typeof documents)["query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      count\n      pages\n      next\n      prev\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}"];
+export function graphql(source: "query Character($id: ID!) {\n  character(id: $id) {\n    id\n    name\n    status\n    species\n    gender\n    image\n    origin {\n      name\n    }\n    location {\n      name\n    }\n    episode {\n      id\n    }\n  }\n}"): (typeof documents)["query Character($id: ID!) {\n  character(id: $id) {\n    id\n    name\n    status\n    species\n    gender\n    image\n    origin {\n      name\n    }\n    location {\n      name\n    }\n    episode {\n      id\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      pages\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}"): (typeof documents)["query Characters($page: Int, $filter: FilterCharacter) {\n  characters(page: $page, filter: $filter) {\n    info {\n      pages\n    }\n    results {\n      id\n      name\n      status\n      species\n      image\n    }\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query FavoriteCharacters($ids: [ID!]!) {\n  charactersByIds(ids: $ids) {\n    id\n    name\n    status\n    species\n    image\n  }\n}"): (typeof documents)["query FavoriteCharacters($ids: [ID!]!) {\n  charactersByIds(ids: $ids) {\n    id\n    name\n    status\n    species\n    image\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
