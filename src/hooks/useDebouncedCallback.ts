@@ -6,10 +6,7 @@ export function useDebouncedCallback<Args extends unknown[]>(
 ) {
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined)
 
-  useEffect(() => {
-    const pending = timer
-    return () => clearTimeout(pending.current)
-  }, [])
+  useEffect(() => () => clearTimeout(timer.current), [])
 
   return (...args: Args) => {
     clearTimeout(timer.current)
