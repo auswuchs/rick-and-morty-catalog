@@ -14,7 +14,7 @@ interface SearchInputProps {
 
 export function SearchInput({ label, value, onChange }: SearchInputProps) {
   const [draft, setDraft] = useState(value)
-  const notify = useDebouncedCallback(onChange, DEBOUNCE_MS)
+  const debouncedOnChange = useDebouncedCallback(onChange, DEBOUNCE_MS)
 
   return (
     <label className={styles.field}>
@@ -25,7 +25,7 @@ export function SearchInput({ label, value, onChange }: SearchInputProps) {
         value={draft}
         onChange={(event) => {
           setDraft(event.target.value)
-          notify(event.target.value)
+          debouncedOnChange(event.target.value)
         }}
       />
     </label>
