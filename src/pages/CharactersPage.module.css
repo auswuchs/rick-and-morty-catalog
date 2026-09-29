@@ -1,0 +1,35 @@
+.page {
+  width: 100%;
+  max-width: 76rem;
+  padding: var(--space-8) var(--space-4) var(--space-12);
+  margin-inline: auto;
+}
+
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.amp {
+  color: var(--color-accent);
+}
+
+.subtitle {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+}
+
+.results {
+  margin-top: var(--space-6);
+}
+
+.footer {
+  margin-top: var(--space-8);
+}

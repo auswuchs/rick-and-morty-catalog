@@ -5,7 +5,7 @@ import { mapCharacters, mapPageInfo } from '~/modules/characters/services/Charac
 import type { CharactersFilters } from '~/modules/characters/types'
 
 export function useCharactersView(page: number, filters: CharactersFilters) {
-  const { data, loading, error } = useQuery(CharactersDocument, {
+  const { data, loading, error, refetch } = useQuery(CharactersDocument, {
     variables: {
       page,
       filter: {
@@ -21,5 +21,6 @@ export function useCharactersView(page: number, filters: CharactersFilters) {
     pageInfo: mapPageInfo(data),
     loading,
     error,
+    refetch,
   }
 }

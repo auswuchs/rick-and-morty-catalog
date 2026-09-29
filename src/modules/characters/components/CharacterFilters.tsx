@@ -1,17 +1,19 @@
 import { useState } from 'react'
 
+import { Button } from '~/components/ui/Button'
 import { SearchInput } from '~/components/ui/SearchInput'
+import { Select } from '~/components/ui/Select'
 import { parseCharacterStatus } from '~/modules/characters/services/CharacterFilterParser'
-import type { CharactersFilters, CharacterStatus, SetCharactersFilter } from '~/modules/characters/types'
+import { STATUS_LABELS } from '~/modules/characters/services/CharacterStatusLabels'
+import type { CharactersFilters, SetCharactersFilter } from '~/modules/characters/types'
 import { CHARACTER_STATUSES } from '~/modules/characters/types'
 
 import styles from './CharacterFilters.module.css'
 
-const STATUS_LABELS: Record<CharacterStatus, string> = {
-  alive: 'Жив',
-  dead: 'Мёртв',
-  unknown: 'Неизвестно',
-}
+const STATUS_OPTIONS = [
+  { value: '', label: 'Любой' },
+  ...CHARACTER_STATUSES.map((status) => ({ value: status, label: STATUS_LABELS[status] })),
+]
 
 interface CharacterFiltersProps {
   filters: CharactersFilters
@@ -30,6 +32,8 @@ export function CharacterFilters({ filters, onChange, onReset }: CharacterFilter
   return (
     <form
       className={styles.filters}
+      role="search"
+      aria-label="Фильтры персонажей"
       onSubmit={(event) => event.preventDefault()}
     >
       <SearchInput
@@ -44,30 +48,13 @@ export function CharacterFilters({ filters, onChange, onReset }: CharacterFilter
         value={filters.species}
         onChange={(value) => onChange('species', value)}
       />
-      <label className={styles.field}>
-        <span className={styles.label}>Статус</span>
-        <select
-          className={styles.select}
-          value={filters.status ?? ''}
-          onChange={(event) => onChange('status', parseCharacterStatus(event.target.value))}
-        >
-          <option value="">Любой</option>
-          {CHARACTER_STATUSES.map((status) => (
-            <option
-              key={status}
-              value={status}
-            >
-              {STATUS_LABELS[status]}
-            </option>
-          ))}
-        </select>
-      </label>
-      <button
-        type="button"
-        onClick={reset}
-      >
-        Сбросить
-      </button>
+      <Select
+        label="Статус"
+        value={filters.status ?? ''}
+        options={STATUS_OPTIONS}
+        onChange={(value) => onChange('status', parseCharacterStatus(value))}
+      />
+      <Button onClick={reset}>Сбросить</Button>
     </form>
   )
 }

@@ -1,4 +1,5 @@
 import type { CharactersQuery } from '~/gql/graphql'
+import { parseCharacterStatus } from '~/modules/characters/services/CharacterFilterParser'
 import type { Character, CharactersPageInfo } from '~/modules/characters/types'
 
 export function mapCharacters(query: CharactersQuery | undefined): Character[] {
@@ -12,7 +13,7 @@ export function mapCharacters(query: CharactersQuery | undefined): Character[] {
     return [{
       id: raw.id,
       name: raw.name,
-      status: raw.status ?? 'unknown',
+      status: parseCharacterStatus(raw.status?.toLowerCase() ?? null) ?? 'unknown',
       species: raw.species ?? 'unknown',
       image: raw.image,
     }]
@@ -20,11 +21,5 @@ export function mapCharacters(query: CharactersQuery | undefined): Character[] {
 }
 
 export function mapPageInfo(query: CharactersQuery | undefined): CharactersPageInfo {
-  const info = query?.characters?.info
-
-  return {
-    pages: info?.pages ?? 0,
-    next: info?.next ?? null,
-    prev: info?.prev ?? null,
-  }
+  return { pages: query?.characters?.info?.pages ?? 0 }
 }

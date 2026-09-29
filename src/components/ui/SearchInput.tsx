@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { useDebouncedCallback } from '~/hooks/useDebouncedCallback'
 
-import styles from './SearchInput.module.css'
+import styles from './Field.module.css'
 
 const DEBOUNCE_MS = 300
 
@@ -20,7 +20,7 @@ export function SearchInput({ label, value, onChange }: SearchInputProps) {
     <label className={styles.field}>
       <span className={styles.label}>{label}</span>
       <input
-        className={styles.input}
+        className={styles.control}
         type="search"
         value={draft}
         onChange={(event) => {

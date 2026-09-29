@@ -1,0 +1,26 @@
+.pulse {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.name,
+.meta {
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-sm);
+}
+
+.name {
+  width: 75%;
+  height: 1.4rem;
+}
+
+.meta {
+  width: 50%;
+  height: 1rem;
+  margin-top: var(--space-2);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
+  }
+}

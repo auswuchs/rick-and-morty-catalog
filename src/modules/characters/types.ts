@@ -5,15 +5,13 @@ export type CharacterStatus = typeof CHARACTER_STATUSES[number]
 export interface Character {
   id: string
   name: string
-  status: string
+  status: CharacterStatus
   species: string
   image: string
 }
 
 export interface CharactersPageInfo {
   pages: number
-  next: number | null
-  prev: number | null
 }
 
 export interface CharactersFilters {
